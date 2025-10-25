@@ -1,0 +1,89 @@
+{
+  "common": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "actions": "Actions",
+    "status": "Status",
+    "date": "Date",
+    "view": "View",
+    "close": "Close"
+  },
+  "auth": {
+    "loginTitle": "Login to Your Account",
+    "invalidCredentials": "Invalid email or password",
+    "loggingIn": "Logging in...",
+    "signIn": "Sign In"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "totalProfiles": "Total Profiles",
+    "newProfiles": "New Profiles",
+    "pendingProfiles": "Pending Profiles",
+    "acceptedProfiles": "Accepted Profiles",
+    "rejectedProfiles": "Rejected Profiles"
+  },
+  "rejectionSide": {
+    "boySide": "Boy's Side",
+    "girlSide": "Girl's Side"
+  },
+  "profiles": {
+    "title": "Profiles",
+    "addProfile": "Add Profile",
+    "editProfile": "Edit Profile",
+    "profileDetails": "Profile Details",
+    "name": "Name",
+    "fathersName": "Father's Name",
+    "nakshathram": "Nakshathram",
+    "age": "Age",
+    "education": "Education",
+    "occupation": "Occupation",
+    "location": "Location",
+    "contact": "Contact",
+    "bio": "Bio",
+    "photos": "Photos",
+    "changeStatus": "Change Status",
+    "rejectedBy": "Rejected By",
+    "rejectionReason": "Rejection Reason",
+    "addComment": "Add Comment",
+    "comments": "Comments",
+    "addFollowUp": "Add Follow Up",
+    "followUps": "Follow Ups",
+    "status": {
+      "new": "New",
+      "pending": "Pending",
+      "accepted": "Accepted",
+      "rejected": "Rejected"
+    },
+    "rejectionSide": {
+      "boySide": "Boy's Side",
+      "girlSide": "Girl's Side"
+    }
+  },
+  "users": {
+    "title": "Users",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "role": "Role",
+    "privileges": "Privileges",
+    "language": "Language",
+    "roles": {
+      "admin": "Admin",
+      "member": "Member"
+    }
+  },
+  "logs": {
+    "title": "Activity Logs",
+    "description": "Track all user activities and system changes"
+  }
+}

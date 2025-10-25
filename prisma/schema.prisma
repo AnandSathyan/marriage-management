@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      UserRole @default(MEMBER)
+  language  Language @default(ENGLISH)
+  isActive  Boolean  @default(true)
+  privileges String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profiles   Profile[]
+  editHistory ProfileEditHistory[]
+  activityLogs ActivityLog[]
+
+  @@index([email])
+}
+
+model Profile {
+  id           String        @id @default(cuid())
+  name         String
+  fathersName  String?
+  nakshathram  String?
+  age          Int
+  education    String
+  occupation   String
+  location     String
+  contact      String?
+  bio          String?
+  photos       String[]
+  status       ProfileStatus @default(NEW)
+  statusReason String?
+  rejectedBy   RejectionSide?
+  rejectionReason String?
+  addedBy      String
+  language     Language      @default(ENGLISH)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  user         User          @relation(fields: [addedBy], references: [id], onDelete: Cascade)
+  comments     Comment[]
+  followUps    FollowUp[]
+  editHistory  ProfileEditHistory[]
+
+  @@index([status])
+  @@index([addedBy])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String
+}
+
+model FollowUp {
+  id        String   @id @default(cuid())
+  content   String
+  scheduledDate DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String
+}
+
+model ProfileEditHistory {
+  id        String   @id @default(cuid())
+  profileId String
+  editedBy  String
+  field     String
+  oldValue  String?
+  newValue  String?
+  createdAt DateTime @default(now())
+
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  editor    User     @relation(fields: [editedBy], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@index([editedBy])
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  action    String   // CREATE, UPDATE, DELETE
+  entityType String  // PROFILE, USER, COMMENT, FOLLOWUP, etc.
+  entityId  String
+  userId    String
+  details   String?  // JSON string with additional details
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+enum UserRole {
+  ADMIN
+  MEMBER
+}
+
+enum ProfileStatus {
+  NEW
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum RejectionSide {
+  BOY_SIDE
+  GIRL_SIDE
+}
+
+enum Language {
+  ENGLISH
+  MALAYALAM
+}

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: marriage-management
+    env: node
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: NEXTAUTH_URL
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
+
+  - type: pspg
+    name: marriage-management-db
+    databaseName: marriage_db
+    user: marriage_user
+    plan: free
