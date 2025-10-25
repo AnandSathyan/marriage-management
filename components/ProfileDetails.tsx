@@ -224,6 +224,7 @@ export default function ProfileDetails({ profile, userId }: ProfileDetailsProps)
           {profile.photos.length > 0 ? (
             profile.photos.map((photo, index) => (
               <div key={index} className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photo}
                   alt={`${profile.name} - Photo ${index + 1}`}

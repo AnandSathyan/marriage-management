@@ -39,7 +39,7 @@ export default async function DashboardPage() {
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
               Welcome back, {session.user?.name}! 👋
             </h1>
-            <p className="text-gray-600">Here's an overview of your marriage profiles</p>
+            <p className="text-gray-600">Here&apos;s an overview of your marriage profiles</p>
           </div>
           <DashboardStats
             totalProfiles={totalProfiles}

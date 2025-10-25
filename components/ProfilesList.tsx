@@ -54,11 +54,12 @@ export default function ProfilesList({ profiles }: ProfilesListProps) {
         >
           <div className="h-72 bg-gradient-to-br from-purple-100 to-pink-100 relative overflow-hidden">
             {profile.photos.length > 0 ? (
-              <img
-                src={profile.photos[0]}
-                alt={profile.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={profile.photos[0]}
+                    alt={profile.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-8xl bg-gradient-to-br from-purple-200 to-pink-200">
                 👤
