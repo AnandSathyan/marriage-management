@@ -30,7 +30,7 @@ export async function POST(
       action: 'CREATE',
       entityType: 'FOLLOWUP',
       entityId: followUp.id,
-      userId: session.user!.id!,
+      userId: (session.user as any).id,
       details: { profileId: params.id },
     })
 
